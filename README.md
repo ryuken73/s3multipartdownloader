@@ -10,7 +10,8 @@ javascript 기반의 s3 multipart download class (node.js)
 - 동시 요청수 선택 가능 ( 최대 10개 )
 - Download progress 제공 ( part별, 전체)
 - 이어내리기 기능 : Todo
-- part down 실패 시 자동 retry : Todo
+- Part Down 실패 시 자동 retry : Todo
+- MD5 check : Todo
 
 ## 구성
 - s3MultipartDownloader.js : class 정의 파일
