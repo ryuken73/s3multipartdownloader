@@ -60,6 +60,48 @@ npm install
 ```bash
 node examples/app.js
 ```
+# 이벤트
+```js
+//emit every 500ms
+downloader.on('progress', (progressInfo) => {})
+
+progressInfo = { 
+  startTime: 2018-12-03T01:16:51.933Z,
+  endTime: undefined,
+  srcName: 'file4.exe',
+  dstName: 'c:\\temp\\file4.exe',
+  fsize: 113728512,
+  s3Header:
+   { }, // s3 headers
+  loaded: 28082860, // total loaded 
+  loadedMB: '26.8MB',
+  percent: 24.692893194628272,
+  percentString: '24.7%',
+  partSize: 10485760,
+  partCounts: 11,
+  concurrency: 10,
+  loadedParts: 0, // total number of loaded
+  avgSpeed: '53.5', // MB/s
+  lastLoaded: NaN, // previous loaded
+  lastLoadedMB: 'NaNMB',
+  lastSpeed: 'NaN',
+  remainSec: '2', // estimated remain seconds
+  status: 'downloading' }
+```
+
+```js
+//emit when part download done
+downloader.on('partDownloaded', (result) => {})
+
+result = { 
+  partNum: 9,
+  size: 10485760,
+  range: 'bytes=83886080-94371840',
+  startTime: 2018-12-03T01:16:52.899Z,
+  endTime: 2018-12-03T01:16:53.843Z 
+}
+//
+
 
 ## License
 
