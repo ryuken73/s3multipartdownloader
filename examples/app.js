@@ -14,7 +14,8 @@ const options = {
     s3ApiVersion : s3Params.apiVersion,
     s3Bucket : s3Params.Bucket,
     s3Key : fname,
-    partSize : 10 * 1024 * 1024
+    partSize : 10 * 1024 * 1024,
+    targetDirectory : 'c:/temp'
 }
 
 const downloader = new s3Downloader(options);

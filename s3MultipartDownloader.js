@@ -122,6 +122,9 @@ class s3Downloader extends eventEmitter {
                 partResult.startTime = this.PART.PROGRESS[partNum].startTime;
                 partResult.endTime = this.PART.PROGRESS[partNum].endTime;
 
+                // update this.PART.PROGRESS
+                this.PART.PROGRESS[partNum].loaded = partResult.size;
+
                 this.emit('partDownloaded', partResult);
                 resolve(data) 
             })      
@@ -306,6 +309,7 @@ class s3Downloader extends eventEmitter {
                     const jobNum = job.jobNum;
                     const partNum = job.args.slice.partNum;
                     const offset = job.args.slice.start;
+                    
                     this._writePartToFile(writeFD, offset, downloadedPart)                   
                     .then(() => {
                         writeToFileDone.push(jobNum);
