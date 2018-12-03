@@ -2,6 +2,7 @@
 const AWS = require('aws-sdk');
 const s3Downloader = require('../s3MultipartDownloader');
 const s3Params = require('../s3params');
+const {debugEvent} = require('../lib/debugger')
 
 AWS.config.loadFromPath('../awsconfig.json');
 
@@ -17,4 +18,15 @@ const options = {
 }
 
 const downloader = new s3Downloader(options);
+
+downloader.on('progress', (progressInfo) => {
+    console.log(progressInfo);
+    debugEvent(progressInfo);
+});
+
+downloader.on('partDownloaded', (result) => {
+    console.log(result);
+    debugEvent(result);
+})
+
 downloader.start(5);
