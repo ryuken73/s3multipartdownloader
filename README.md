@@ -1,5 +1,5 @@
 # s3 Multipart Downloader
-javascript 기반의 s3 multipart download class (for node.js)
+  AWS s3 multipart download class made by javascript (for node.js, not browser)
 
 # 배경
 - AWS SDK에서 mutipart upload api는 제공되지만 download api는 없음
